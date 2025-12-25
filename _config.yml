@@ -21,7 +21,7 @@ description: >- # dont remove this line. this will ignore all new lines until th
   My interests include programming, technical design, and building projects that bridge theory with real-world applications.
 
 # Place your profile image in /assets/images/profile-image/folder and edit the file name
-profile_image: ./assets/images/profile-image/avatar.jpeg
+profile_image: https://drive.google.com/file/d/1JZqcKz_Z6sGxCzFFjc-N5_2JNx2kN--X/view?usp=sharing
 
 
 # Link your resume
