@@ -1,18 +1,21 @@
 ---
 layout: post
 title: RC car
-description:  Designed, 3D printed, and assembled functional remote-controlled cars using custom-designed chassis and drivetrain components alongside standard RC electronics. The project focused on mechanical design, rapid prototyping, and system integration, including suspension, steering, and power transmission. Iterative CAD design and testing were used to improve durability, handling, and ease of assembly.
+description:  Designed, 3D printed, and assembled functional remote-controlled cars using custom-designed chassis and drivetrain components alongside standard RC electronics. The project focused on mechanical design, rapid prototyping, and system integration, including suspension, steering, and power transmission. Iterative CAD design and testing were used to improve durability, handling, and ease of assembly. (Picture shown above is older version)
 skills: 
 - Solidwork
 - 3D printing
 - Onshape
 main-image: /Top_view.jpg
 ---
-
+---
 ## Front View
 {% include image-gallery.html images="Front_view.jpg" height="400" %}
----
-## Updated steering and suspension
+
+## Onshape model
+{% include image-gallery.html images="FinalAssem.png" height="400" %}
+
+## Steering and suspension
 {% include image-gallery.html images="Suspension_steering.png" height="400" %}
 ---
 
