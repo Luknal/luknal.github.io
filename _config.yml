@@ -58,9 +58,10 @@ skills:
     - GD&T
   - category: Coding
     tools:
-    - GD&T ASME Y14
-    - ISO fits and tolerances
-    - PLM (PTC Windchill / Arena)   
+    - Java
+    - Matlab
+    - Python
+    - C++
   - category: Laboratory
     tools:
     - Philip Ultrasound
