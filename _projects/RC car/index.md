@@ -6,5 +6,5 @@ skills:
 - Solidwork
 - 3D printing
 - Onshape
-main-image: /project.webp 
+main-image: /Top_view.jpg
 ---
