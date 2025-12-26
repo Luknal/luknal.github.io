@@ -6,5 +6,5 @@ skills:
 - Solidwork
 - 3D printing
 - Onshape
-main-image: /Top_view.jpg
+main-image: /RCTop_view.jpg
 ---
