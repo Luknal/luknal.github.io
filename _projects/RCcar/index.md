@@ -1,4 +1,4 @@
-<img width="1957" height="1226" alt="image" src="https://github.com/user-attachments/assets/85375f0a-54f9-4529-bf94-aadfde9bc509" />---
+---
 layout: post
 title: RC car
 description:  Designed, 3D printed, and assembled functional remote-controlled cars using custom-designed chassis and drivetrain components alongside standard RC electronics. The project focused on mechanical design, rapid prototyping, and system integration, including suspension, steering, and power transmission. Iterative CAD design and testing were used to improve durability, handling, and ease of assembly.
@@ -8,6 +8,7 @@ skills:
 - Onshape
 main-image: /Top_view.jpg
 ---
+
 ## Front View
 {% include image-gallery.html images="Front_view.jpg" height="400" %}
 ---
