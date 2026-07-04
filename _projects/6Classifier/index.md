@@ -13,7 +13,7 @@ main-image: /tree.svg
 
 ## Overview
 
-This project is a *binary decision-tree classifier (from scratch).
+This project is a binary decision-tree classifier (from scratch).
 Given labeled text examples, it builds a tree where each internal node asks a
 yes/no question about a single feature (how frequently a given word appears), and each
 leaf is a predicted label. To classify a new document, you walk from the root to a leaf,
