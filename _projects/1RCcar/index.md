@@ -20,10 +20,11 @@ The ESP32-based control electronics and brushed motor mounted on the chassis.
 {% include image-gallery.html images="Suspension_steering.png" height="400" %}
 
 ## Driving demo
+{% assign video_base = page.url | remove: 'index' | remove: '.html' %}
 <video controls playsinline preload="metadata" style="width:360px; max-width:100%; height:auto; border-radius:6px; display:block;">
-  <source src="Demo.mp4" type="video/mp4">
+  <source src="{{ video_base }}Demo.mp4" type="video/mp4">
   Your browser does not support the video tag. You can
-  <a href="Demo.mp4">download the clip</a> instead.
+  <a href="{{ video_base }}Demo.mp4">download the clip</a> instead.
 </video>
 ---
 
