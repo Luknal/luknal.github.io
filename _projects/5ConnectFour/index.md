@@ -15,15 +15,15 @@ main-image: /board.svg
 
 Connect Four is a two-player game where players take turns dropping tokens into columns;
 the first to line up a run of tokens — vertically, horizontally, or diagonally — wins. This
-implementation is built on top of a reusable **`AbstractStrategyGame`** framework, so the
-same game engine (the `Client`) can run Connect Four, Tic-Tac-Toe, or any other perfect-
+implementation is built on top of a reusable AbstractStrategyGame framework, so the
+same game engine (the Client) can run Connect Four, Tic-Tac-Toe, or any other perfect-
 information strategy game without modification.
 
 Two design choices make it flexible:
 
-- **Customizable rules** — the board dimensions and the number of tokens needed to win are
+- Customizable rules — the board dimensions and the number of tokens needed to win are
   constructor parameters, so the default 6×7 / connect-4 game is just one configuration.
-- **Direction-agnostic win detection** — a single helper checks for a run in *any*
+- Direction-agnostic win detection — a single helper checks for a run in any
   direction by taking a row/column step, so horizontal, vertical, and both diagonals reuse
   the same code.
 
