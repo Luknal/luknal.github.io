@@ -1,0 +1,43 @@
+<svg viewBox="0 0 620 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decision tree classifier" font-family="Poppins, sans-serif">
+  <rect width="620" height="420" fill="#f3f5fb"/>
+
+  <!-- edges -->
+  <g stroke="#b9c4de" stroke-width="3" fill="none">
+    <path d="M310 88 L150 168"/>
+    <path d="M310 88 L440 168"/>
+    <path d="M440 214 L360 300"/>
+    <path d="M440 214 L520 300"/>
+  </g>
+
+  <!-- edge labels -->
+  <g font-size="15" fill="#6b7280">
+    <text x="205" y="120">&lt; t</text>
+    <text x="392" y="120">&#8805; t</text>
+    <text x="378" y="262">&lt; t</text>
+    <text x="486" y="262">&#8805; t</text>
+  </g>
+
+  <!-- root decision node -->
+  <g>
+    <rect x="222" y="40" width="176" height="50" rx="12" fill="#4a76ee"/>
+    <text x="310" y="71" text-anchor="middle" fill="#ffffff" font-size="17" font-weight="600">"upon" &lt; 0.021</text>
+  </g>
+
+  <!-- second decision node -->
+  <g>
+    <rect x="356" y="168" width="168" height="48" rx="12" fill="#4a76ee"/>
+    <text x="440" y="198" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="600">"there" &lt; 0.008</text>
+  </g>
+
+  <!-- leaves -->
+  <g font-size="16" font-weight="600" fill="#1a1c20">
+    <rect x="78" y="168" width="134" height="48" rx="24" fill="#ffffff" stroke="#4a76ee" stroke-width="2"/>
+    <text x="145" y="198" text-anchor="middle">Hamilton</text>
+
+    <rect x="296" y="300" width="128" height="48" rx="24" fill="#ffffff" stroke="#4a76ee" stroke-width="2"/>
+    <text x="360" y="330" text-anchor="middle">Madison</text>
+
+    <rect x="456" y="300" width="128" height="48" rx="24" fill="#ffffff" stroke="#4a76ee" stroke-width="2"/>
+    <text x="520" y="330" text-anchor="middle">Hamilton</text>
+  </g>
+</svg>

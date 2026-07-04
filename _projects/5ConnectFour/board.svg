@@ -1,0 +1,58 @@
+<svg viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Connect Four board">
+  <rect width="600" height="520" fill="#f3f5fb"/>
+  <rect x="24" y="24" width="552" height="472" rx="24" fill="#4a76ee"/>
+  <g>
+    <!-- row/col holes: 7 columns, 6 rows -->
+    <!-- token colors: empty #ffffff, P1 (X) #e63946, P2 (O) #ffd166 -->
+    <!-- Row 1 (top) -->
+    <circle cx="72"  cy="72"  r="30" fill="#ffffff"/>
+    <circle cx="147" cy="72"  r="30" fill="#ffffff"/>
+    <circle cx="222" cy="72"  r="30" fill="#ffffff"/>
+    <circle cx="297" cy="72"  r="30" fill="#ffffff"/>
+    <circle cx="372" cy="72"  r="30" fill="#ffffff"/>
+    <circle cx="447" cy="72"  r="30" fill="#ffffff"/>
+    <circle cx="522" cy="72"  r="30" fill="#ffffff"/>
+    <!-- Row 2 -->
+    <circle cx="72"  cy="147" r="30" fill="#ffffff"/>
+    <circle cx="147" cy="147" r="30" fill="#ffffff"/>
+    <circle cx="222" cy="147" r="30" fill="#ffffff"/>
+    <circle cx="297" cy="147" r="30" fill="#e63946"/>
+    <circle cx="372" cy="147" r="30" fill="#ffffff"/>
+    <circle cx="447" cy="147" r="30" fill="#ffffff"/>
+    <circle cx="522" cy="147" r="30" fill="#ffffff"/>
+    <!-- Row 3 -->
+    <circle cx="72"  cy="222" r="30" fill="#ffffff"/>
+    <circle cx="147" cy="222" r="30" fill="#ffffff"/>
+    <circle cx="222" cy="222" r="30" fill="#ffffff"/>
+    <circle cx="297" cy="222" r="30" fill="#ffd166"/>
+    <circle cx="372" cy="222" r="30" fill="#e63946"/>
+    <circle cx="447" cy="222" r="30" fill="#ffffff"/>
+    <circle cx="522" cy="222" r="30" fill="#ffffff"/>
+    <!-- Row 4 -->
+    <circle cx="72"  cy="297" r="30" fill="#ffffff"/>
+    <circle cx="147" cy="297" r="30" fill="#ffd166"/>
+    <circle cx="222" cy="297" r="30" fill="#ffd166"/>
+    <circle cx="297" cy="297" r="30" fill="#e63946"/>
+    <circle cx="372" cy="297" r="30" fill="#ffd166"/>
+    <circle cx="447" cy="297" r="30" fill="#ffffff"/>
+    <circle cx="522" cy="297" r="30" fill="#ffffff"/>
+    <!-- Row 5 -->
+    <circle cx="72"  cy="372" r="30" fill="#ffd166"/>
+    <circle cx="147" cy="372" r="30" fill="#e63946"/>
+    <circle cx="222" cy="372" r="30" fill="#e63946"/>
+    <circle cx="297" cy="372" r="30" fill="#e63946"/>
+    <circle cx="372" cy="372" r="30" fill="#ffd166"/>
+    <circle cx="447" cy="372" r="30" fill="#e63946"/>
+    <circle cx="522" cy="372" r="30" fill="#ffffff"/>
+    <!-- Row 6 (bottom) -->
+    <circle cx="72"  cy="447" r="30" fill="#e63946"/>
+    <circle cx="147" cy="447" r="30" fill="#e63946"/>
+    <circle cx="222" cy="447" r="30" fill="#e63946"/>
+    <circle cx="297" cy="447" r="30" fill="#ffd166"/>
+    <circle cx="372" cy="447" r="30" fill="#e63946"/>
+    <circle cx="447" cy="447" r="30" fill="#ffd166"/>
+    <circle cx="522" cy="447" r="30" fill="#e63946"/>
+  </g>
+  <!-- highlight the winning diagonal of four reds -->
+  <line x1="147" y1="447" x2="372" y2="222" stroke="#0c0cf2" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
+</svg>
