@@ -1,6 +1,6 @@
 ---
 layout: post
-title: lower limb prosthetics
+title: Lower limb prosthetics
 description:  Developed an adjustable leg prosthetic for growing users. The system uses 3D printed changeable parts to allow easy resizing and replacement as the user grows. Conducted testing and stress simulation of the design model.
 skills: 
 - CAD/onshape/solidwork
