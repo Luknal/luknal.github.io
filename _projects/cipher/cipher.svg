@@ -1,0 +1,60 @@
+<svg viewBox="0 0 620 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Caesar cipher shifting plaintext to ciphertext" font-family="Poppins, sans-serif">
+  <rect width="620" height="400" fill="#f3f5fb"/>
+
+  <!-- labels -->
+  <g font-size="14" fill="#6b7280" letter-spacing="2">
+    <text x="113" y="30">PLAINTEXT</text>
+    <text x="113" y="392">CIPHERTEXT</text>
+  </g>
+
+  <!-- plaintext tiles: H E L L O -->
+  <g>
+    <g fill="#ffffff" stroke="#4a76ee" stroke-width="2">
+      <rect x="111" y="42" width="70" height="70" rx="12"/>
+      <rect x="193" y="42" width="70" height="70" rx="12"/>
+      <rect x="275" y="42" width="70" height="70" rx="12"/>
+      <rect x="357" y="42" width="70" height="70" rx="12"/>
+      <rect x="439" y="42" width="70" height="70" rx="12"/>
+    </g>
+    <g fill="#1a1c20" font-size="36" font-weight="600" text-anchor="middle">
+      <text x="146" y="90">H</text>
+      <text x="228" y="90">E</text>
+      <text x="310" y="90">L</text>
+      <text x="392" y="90">L</text>
+      <text x="474" y="90">O</text>
+    </g>
+  </g>
+
+  <!-- encrypt arrows -->
+  <g stroke="#4a76ee" stroke-width="3" fill="#4a76ee">
+    <line x1="310" y1="116" x2="310" y2="158"/>
+    <polygon points="310,166 303,154 317,154"/>
+    <line x1="310" y1="222" x2="310" y2="276"/>
+    <polygon points="310,284 303,272 317,272"/>
+  </g>
+  <text x="326" y="145" font-size="15" fill="#4a76ee" font-weight="600">encrypt</text>
+
+  <!-- cipher box -->
+  <g>
+    <rect x="188" y="162" width="244" height="54" rx="27" fill="#4a76ee"/>
+    <text x="310" y="196" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="600">Caesar shift&#160;&#160;+3</text>
+  </g>
+
+  <!-- ciphertext tiles: K H O O R -->
+  <g>
+    <g fill="#4a76ee">
+      <rect x="111" y="288" width="70" height="70" rx="12"/>
+      <rect x="193" y="288" width="70" height="70" rx="12"/>
+      <rect x="275" y="288" width="70" height="70" rx="12"/>
+      <rect x="357" y="288" width="70" height="70" rx="12"/>
+      <rect x="439" y="288" width="70" height="70" rx="12"/>
+    </g>
+    <g fill="#ffffff" font-size="36" font-weight="600" text-anchor="middle">
+      <text x="146" y="336">K</text>
+      <text x="228" y="336">H</text>
+      <text x="310" y="336">O</text>
+      <text x="392" y="336">O</text>
+      <text x="474" y="336">R</text>
+    </g>
+  </g>
+</svg>
