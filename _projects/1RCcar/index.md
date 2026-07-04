@@ -9,9 +9,6 @@ skills:
 main-image: /Chassis.jpg
 ---
 ---
-## Front View
-{% include image-gallery.html images="Front_view.jpg" height="400" %}
-
 ## Electronics
 The ESP32-based control electronics and brushed motor mounted on the chassis.
 {% include image-gallery.html images="Electronics.jpg" height="400" %}
