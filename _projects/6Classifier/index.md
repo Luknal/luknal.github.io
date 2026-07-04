@@ -13,27 +13,18 @@ main-image: /tree.svg
 
 ## Overview
 
-This project is a **binary decision-tree classifier** written from scratch — no ML
-libraries. Given labeled text examples, it builds a tree where each internal node asks a
-yes/no question about a single **feature** (how frequently a given word appears), and each
-leaf is a predicted **label**. To classify a new document, you walk from the root to a leaf,
+This project is a *binary decision-tree classifier (from scratch).
+Given labeled text examples, it builds a tree where each internal node asks a
+yes/no question about a single feature (how frequently a given word appears), and each
+leaf is a predicted label. To classify a new document, you walk from the root to a leaf,
 turning left or right at each node depending on that document's word frequencies.
-
-It was used on real datasets — attributing the disputed *Federalist Papers* to Hamilton or
-Madison, and separating spam from legitimate email — but the classifier itself is
-domain-agnostic: it just works on `TextBlock` feature vectors and string labels.
-
-The interesting parts are all **recursive**: building/growing the tree, classifying a
-datapoint, and saving the tree to a file all walk the same structure.
 
 ---
 
 ## The tree node
 
-Each node is either a **decision node** (a feature + threshold, with left/right children) or
-a **leaf** (a label, plus the training datapoint that created it). A single boolean —
-`isLeaf()` — distinguishes them, and the constructors make the two shapes explicit.
-
+Each node is either a decision node (a feature + threshold, with left/right children) or
+a leaf (a label, plus the training datapoint that created it). 
 ```java
 private static class ClassifierNode {
     public final String label;
@@ -103,7 +94,7 @@ private String classify(ClassifierNode node, TextBlock input) {
 ## Training: growing the tree one example at a time
 
 Training starts with a single leaf and feeds in examples one at a time. When an example
-reaches a leaf whose label disagrees, that leaf is **split**: the feature with the biggest
+reaches a leaf whose label disagrees, that leaf is split: the feature with the biggest
 difference between the two datapoints becomes a new decision node, with the two competing
 labels as its children. The threshold is the midpoint of their values on that feature.
 
