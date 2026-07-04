@@ -11,6 +11,20 @@ skills:
 main-image: /board.svg
 ---
 
+## Play it in your browser
+
+Give it a try right here — take on a simple computer opponent, or switch to
+two-player mode and challenge a friend.
+
+<iframe src="/assets/connectfour/index.html" title="Playable Connect Four" loading="lazy"
+        style="width:100%; max-width:520px; height:660px; border:1px solid #ddd; border-radius:12px; display:block; margin:0 auto; background:#f3f5fb;"></iframe>
+
+<p style="text-align:center; margin-top:10px;">
+  <a href="/assets/connectfour/index.html" target="_blank" rel="noopener">Open the game in a full page ↗</a>
+</p>
+
+---
+
 ## Overview
 
 Connect Four is a two-player game where players take turns dropping tokens into columns;
