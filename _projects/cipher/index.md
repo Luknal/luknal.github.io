@@ -282,10 +282,3 @@ public class MultiCipher extends Cipher {
 ```
 
 ---
-
-## Running it
-
-The `Client` ties everything together with an interactive console menu for encoding and
-decoding strings or whole files:
-
-{% include image-gallery.html images="Client.png" height="400" %}
