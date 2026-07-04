@@ -25,7 +25,7 @@ profile_image: ./assets/images/profile-image/1747622803978.jpg
 
 # Link your resume
 # You can place your resume in assets/resume/{resume.pdf or add external link such as pdf saved in google drive 
-resume-url: https://drive.google.com/file/d/1MdrJHwEL6wASI318lX8-3IxykezCN-QM/view?usp=sharing # or /assets/resume/resume.pdf
+resume-url: /assets/resume/Daniel_Li_Resume.pdf # or external link such as a Google Drive PDF
 
 
 # Set up external links - this will show up as small icons next to your name.
