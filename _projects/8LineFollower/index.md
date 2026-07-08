@@ -41,6 +41,12 @@ demo**.
   the photoresistors close to the surface, which sharply improved reading accuracy and
   kept the car on the line.
 
+The board interleaves seven photoresistors (R8–R14) with six illumination LEDs (D1–D6)
+and their current-limiting resistors, breaking out to the Arduino through a single header.
+Below is a render of the manufactured layout.
+
+{% include image-gallery.html images="pcb.png" height="450" %}
+
 {% include image-gallery.html images="car.jpg" height="450" %}
 
 ---
@@ -55,6 +61,57 @@ track until the car tracked cleanly and handled tight turns.
 The Arduino firmware was adapted from the provided motor-driver template — mapping pins to
 our physical assembly, driving the two motors through the Adafruit shield, and integrating
 the sensor readings into the control loop.
+
+### Motor-driver bring-up sketch
+
+Before wiring in the sensors and control loop, we used this sketch to verify the motor
+shield and confirm both wheels ran in the correct direction — the LED blinks for two
+seconds as a start delay, then the motors run forward, reverse, and stop on a loop.
+
+```cpp
+#include <Wire.h>
+#include <Adafruit_MotorShield.h>
+
+// Initialize the motor shield and the two drive motors
+Adafruit_MotorShield AFMS = Adafruit_MotorShield();
+Adafruit_DCMotor *Motor1 = AFMS.getMotor(1);
+Adafruit_DCMotor *Motor2 = AFMS.getMotor(2);
+
+// Base motor speeds (0–255); kept separate so a faster motor can be trimmed
+int M1Sp = 60;
+int M2Sp = 60;
+
+int led_Pin = 13;
+
+void setup() {
+  Serial.begin(9600);
+  AFMS.begin();                 // start talking to the motor shield
+  pinMode(led_Pin, OUTPUT);
+
+  // Blink for ~2 s so there's a moment before the cart actually moves
+  for (int i = 0; i < 20; i++) {
+    digitalWrite(led_Pin, HIGH); delay(100);
+    digitalWrite(led_Pin, LOW);  delay(100);
+  }
+}
+
+void loop() {
+  // Forward for 3 s
+  Motor1->setSpeed(M1Sp); Motor1->run(FORWARD);
+  Motor2->setSpeed(M2Sp); Motor2->run(FORWARD);
+  delay(3000);
+
+  // Reverse for 3 s
+  Motor1->run(BACKWARD);
+  Motor2->run(BACKWARD);
+  delay(3000);
+
+  // Stop for 3 s
+  Motor1->run(RELEASE);
+  Motor2->run(RELEASE);
+  delay(3000);
+}
+```
 
 ---
 
