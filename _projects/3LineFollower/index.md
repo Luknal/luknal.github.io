@@ -58,58 +58,72 @@ letting us tune behavior live on the track instead of recompiling. Final checked
 values were **speed 40, P 20, I 8, D 50**, reached experimentally by iterating on the
 track until the car tracked cleanly and handled tight turns.
 
-The Arduino firmware was adapted from the provided motor-driver template — mapping pins to
-our physical assembly, driving the two motors through the Adafruit shield, and integrating
-the sensor readings into the control loop.
+Before the sensors were wired in, a short bring-up sketch verified the motor shield and
+confirmed both wheels ran in the correct direction. The final firmware then reads the seven
+photoresistors each pass, maps them to a 0–100 scale using the calibration bounds, collapses
+them into a single steering error, and feeds that error through the PID law.
 
-### Motor-driver bring-up sketch
+### The control loop
 
-Before wiring in the sensors and control loop, we used this sketch to verify the motor
-shield and confirm both wheels ran in the correct direction — the LED blinks for two
-seconds as a start delay, then the motors run forward, reverse, and stop on a loop.
+Each iteration runs the full sense → error → PID → drive pipeline:
 
 ```cpp
-#include <Wire.h>
-#include <Adafruit_MotorShield.h>
-
-// Initialize the motor shield and the two drive motors
-Adafruit_MotorShield AFMS = Adafruit_MotorShield();
-Adafruit_DCMotor *Motor1 = AFMS.getMotor(1);
-Adafruit_DCMotor *Motor2 = AFMS.getMotor(2);
-
-// Base motor speeds (0–255); kept separate so a faster motor can be trimmed
-int M1Sp = 60;
-int M2Sp = 60;
-
-int led_Pin = 13;
-
-void setup() {
-  Serial.begin(9600);
-  AFMS.begin();                 // start talking to the motor shield
-  pinMode(led_Pin, OUTPUT);
-
-  // Blink for ~2 s so there's a moment before the cart actually moves
-  for (int i = 0; i < 20; i++) {
-    digitalWrite(led_Pin, HIGH); delay(100);
-    digitalWrite(led_Pin, LOW);  delay(100);
-  }
-}
-
 void loop() {
-  // Forward for 3 s
-  Motor1->setSpeed(M1Sp); Motor1->run(FORWARD);
-  Motor2->setSpeed(M2Sp); Motor2->run(FORWARD);
-  delay(3000);
+  ReadPhotoResistors();  // read 7 LDRs, map each to 0–100 via calibration bounds
+  CalcError();           // collapse the 7 readings into one steering error (-3 … +3)
+  PID_Turn();            // PID law -> per-motor trim
+  RunMotors();           // apply trim on top of the base speed
+}
+```
 
-  // Reverse for 3 s
-  Motor1->run(BACKWARD);
-  Motor2->run(BACKWARD);
-  delay(3000);
+Calibration and gain values can be read live from the four on-board potentiometers, or
+pinned to measured constants via `USE_HARDCODED_CAL` / `USE_HARDCODED_SPID` toggles — the
+latter skips the calibration routine entirely to cut setup time between runs.
 
-  // Stop for 3 s
-  Motor1->run(RELEASE);
-  Motor2->run(RELEASE);
-  delay(3000);
+### PID with custom tuning
+
+Beyond the standard proportional/integral/derivative terms, we added a **non-linear edge
+boost** so the car reacts harder as the line drifts toward the outer sensors (sharp turns),
+plus **integrator anti-windup** to keep the accumulated error from saturating:
+
+```cpp
+void PID_Turn() {
+  kP = (float)kPRead;  kI = (float)kIRead;  kD = (float)kDRead;
+
+  // Non-linear error boost: small errors pass through, large errors get amplified
+  const float EDGE_BOOST = 1.0;
+  float normalized = error / 3.0;                           // -1.0 … +1.0
+  float boost = 1.0 + EDGE_BOOST * normalized * normalized; // 1.0 at center, higher at edges
+  error = error * boost;
+
+  Turn = error * kP + sumerror * kI + (error - lasterror) * kD;
+
+  sumerror += error;
+  sumerror = constrain(sumerror, -5, 5);  // anti-windup clamp
+  lasterror = error;
+
+  M1P =  Turn;   // opposite trims steer the car
+  M2P = -Turn;
+}
+```
+
+`RunMotors()` then applies an **adaptive base speed** — the car eases off the throttle as the
+error grows so it can take tight corners without overshooting, and runs near full speed on
+the straights:
+
+```cpp
+void RunMotors() {
+  // Slow down proportionally to error: 100% speed centered, down to ~30% at the edges
+  float curveFactor = 1.0 - min(abs(error) / 3.0, 1.0) * 0.7;
+  int adaptiveSp = (int)(SpRead * curveFactor);
+
+  M1SpeedtoMotor = constrain(M1Sp + adaptiveSp + M1P, -255, 255);
+  M2SpeedtoMotor = constrain(M2Sp + adaptiveSp + M2P, -255, 255);
+
+  Motor1->setSpeed(abs(M1SpeedtoMotor));
+  Motor2->setSpeed(abs(M2SpeedtoMotor));
+  Motor1->run(M1SpeedtoMotor > 0 ? FORWARD : BACKWARD);
+  Motor2->run(M2SpeedtoMotor > 0 ? FORWARD : BACKWARD);
 }
 ```
 
