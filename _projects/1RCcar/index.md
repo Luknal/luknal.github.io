@@ -10,7 +10,7 @@ main-image: /Chassis.jpg
 ---
 ---
 ## Electronics
-The ESP32-based control electronics and brushed motor mounted on the chassis.
+Another version (DONE BY ANOTHER GROUP NOT ME)
 {% include image-gallery.html images="Electronics.jpg" height="400" %}
 
 ## Onshape model
