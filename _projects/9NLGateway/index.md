@@ -13,8 +13,6 @@ skills:
 main-image: /pipeline.png
 ---
 
----
-
 ## Overview
 
 An engineering team had production data spread across dozens of internal APIs and no way to ask a
@@ -48,6 +46,8 @@ recall, expensive reranking for precision, over a candidate set small enough to 
 
 In production the first stage is bge-m3 embeddings against a Milvus vector store. The published
 repo substitutes keyword matching so it runs without an embedding service.
+
+![The four routing stages, with the two LLM calls highlighted](/_projects/9NLGateway/pipeline.png)
 
 ---
 
@@ -103,31 +103,6 @@ dependencies — serving 15 oilfield endpoints with synthetic data that is:
 The last point matters most. Mock data that merely has the right shape can only prove a chart
 renders. Mock data with a planted anomaly can prove the *analysis* works — that the detection logic
 finds the thing it was built to find.
-
----
-
-## What building it actually taught me
-
-The prototype I extracted this from had never been compiled. Getting it running surfaced four
-defects, and the most instructive one was not the compile error.
-
-The tool catalogue was written in `snake_case`; the Java model expected `camelCase`. Jackson matched
-neither and threw — and the loader caught the exception, logged it, and set the tool list to empty.
-
-The service would have started cleanly, reported itself healthy, and answered every single question
-with "no matching tool found", while the real cause sat three lines deep in a log nobody reads.
-**A failure that is caught, logged, and swallowed is worse than a crash**, because it presents as
-working software. A crash would have been found in the first minute.
-
-A related one: with the naming fixed, loading still failed because a handful of entries carried a
-`type` field the model didn't declare, and Jackson's default is to reject unknown properties. One
-extra descriptive field in one of 93 entries emptied the whole catalogue. Strict deserialisation is
-correct for an API contract and wrong for a human-maintained config file — annotating a parameter
-should not take the service down.
-
-None of this was visible from reading the code. It surfaced on the first build and the first
-`curl`, which is the argument for shipping something a stranger can run: the parts that don't work
-announce themselves.
 
 ---
 
