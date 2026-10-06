@@ -38,7 +38,7 @@ functional blocks, assigned footprints, then placed and routed the board on two 
 
 ## Schematic
 
-The schematic is organized into eight blocks: Power, Power pin, Crystal Oscillator,
+The schematic is organized into nine blocks: Power, Power pin, Crystal Oscillator,
 Reset, Press button detection, STC89C52RC Controller, Controller pin, P0 pull-up
 resistor, and LED.
 
