@@ -10,7 +10,7 @@ skills:
 - REST API design
 - Docker
 - Python
-main-image: /pipeline.png
+main-image: /chat.png
 ---
 
 ## Overview
@@ -21,6 +21,11 @@ which endpoint to call and what parameters it took.
 
 This service closes that gap. A question goes in, the right API gets called, and the answer comes
 back as a labelled table — with no handler written per endpoint.
+
+![Asking "today's 10 highest-producing wells" and getting a labelled table back](/_projects/9NLGateway/chat.png)
+
+The column headings in that answer — 井号, 日产油, 含水率 — are not hardcoded anywhere in the
+application. They come from the `output_fields` block of whichever tool the router picked.
 
 The interesting constraint is that **adding an API is a configuration change, not a code change**.
 All 93 endpoints are declared in YAML.
@@ -48,6 +53,8 @@ In production the first stage is bge-m3 embeddings against a Milvus vector store
 repo substitutes keyword matching so it runs without an embedding service.
 
 ![The four routing stages, with the two LLM calls highlighted](/_projects/9NLGateway/pipeline.png)
+
+*Stages 2 and 3 are the only LLM calls; everything else is declarative.*
 
 ---
 
@@ -79,6 +86,11 @@ Each API is a YAML entry — endpoint, parameters, and a description written for
 
 That `description` is load-bearing: it is what both the matcher and the reranker read. Tuning
 routing accuracy means improving a description rather than editing a classifier.
+
+![The tool catalogue in the admin UI: base URL, endpoint, method, description and parameter count per tool](/_projects/9NLGateway/tool-catalogue.png)
+
+Catalogue entries are managed in the admin UI rather than edited as files, and re-indexing them for
+vector search is a button. Adding an API to the assistant's repertoire never touches Java.
 
 The tradeoff is real and worth stating. When routing is driven by text, failures stop being crashes
 and become *quietly wrong answers* — a badly worded description sends a question to a plausible but
