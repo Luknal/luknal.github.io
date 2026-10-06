@@ -52,7 +52,7 @@ recall, expensive reranking for precision, over a candidate set small enough to 
 In production the first stage is bge-m3 embeddings against a Milvus vector store. The published
 repo substitutes keyword matching so it runs without an embedding service.
 
-![The four routing stages, with the two LLM calls highlighted](/_projects/9NLGateway/pipeline.png)
+![The four routing stages, with the two LLM calls highlighted](/_projects/0NLGateway/pipeline.png)
 
 *Stages 2 and 3 are the only LLM calls; everything else is declarative.*
 
@@ -87,7 +87,7 @@ Each API is a YAML entry — endpoint, parameters, and a description written for
 That `description` is load-bearing: it is what both the matcher and the reranker read. Tuning
 routing accuracy means improving a description rather than editing a classifier.
 
-![The tool catalogue in the admin UI: base URL, endpoint, method, description and parameter count per tool](/_projects/9NLGateway/tool-catalogue.png)
+![The tool catalogue in the admin UI: base URL, endpoint, method, description and parameter count per tool](/_projects/0NLGateway/tool-catalogue.png)
 
 Catalogue entries are managed in the admin UI rather than edited as files, and re-indexing them for
 vector search is a button. Adding an API to the assistant's repertoire never touches Java.
