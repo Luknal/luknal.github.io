@@ -22,10 +22,10 @@ which endpoint to call and what parameters it took.
 This service closes that gap. A question goes in, the right API gets called, and the answer comes
 back as a labelled table — with no handler written per endpoint.
 
-![Asking "today's 10 highest-producing wells" and getting a labelled table back](/_projects/9NLGateway/chat.png)
-
-The column headings in that answer — 井号, 日产油, 含水率 — are not hardcoded anywhere in the
-application. They come from the `output_fields` block of whichever tool the router picked.
+The screenshot above is that working: the question *今天产量最高的10口井* went in, and the assistant
+called the production-ranking endpoint and labelled the result. Those column headings — 井号, 日产油,
+含水率 — are not hardcoded anywhere in the application. They come from the `output_fields` block of
+whichever tool the router picked.
 
 The interesting constraint is that **adding an API is a configuration change, not a code change**.
 All 93 endpoints are declared in YAML.
