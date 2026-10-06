@@ -42,8 +42,6 @@ The schematic is organized into eight blocks: Power, Power pin, Crystal Oscillat
 Reset, Press button detection, STC89C52RC Controller, Controller pin, P0 pull-up
 resistor, and LED.
 
-{% include image-gallery.html images="schematic.png" height="600" %}
-
 ### Power
 
 - **USB-C input.** A 6-pin Type-C receptacle supplies 5 V. Its two **CC pins each have a
