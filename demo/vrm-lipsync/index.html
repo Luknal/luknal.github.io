@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VRM Lip-Sync — Phoneme Timeline vs Acoustic Fallback</title>
+    <meta
+      name="description"
+      content="A 3D VRM avatar lip-syncing in the browser, driven by the phoneme timeline emitted by a VITS speech synthesizer. Toggle to compare against waveform-only estimation."
+    />
+
+    <script type="module" crossorigin src="./assets/index-AOWtUaIT.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CjxLQFLE.css">
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="head">
+        <h1>Phoneme-timeline lip-sync for VRM avatars</h1>
+        <p class="sub">
+          The mouth is driven by the per-phoneme timeline a VITS speech model emits from its own
+          duration predictor — sample-accurate, not estimated. Flip the switch to see what you get
+          when a voice service gives you audio only.
+        </p>
+      </header>
+
+      <section class="stage-row">
+        <div class="stage" id="stage">
+          <canvas id="avatar"></canvas>
+          <div class="stage-empty" id="stageEmpty">
+            <p class="stage-empty-title">No avatar loaded</p>
+            <p>
+              The VRM used in the original project is not redistributable, so it is not bundled
+              here.
+            </p>
+            <label class="btn btn-ghost">
+              Load a .vrm file
+              <input type="file" id="vrmFile" accept=".vrm,.glb" hidden />
+            </label>
+            <p class="stage-empty-hint">…or drop one anywhere on this panel.</p>
+          </div>
+          <div class="stage-loading" id="stageLoading" hidden>
+            Loading avatar… <span id="loadPct">0</span>%
+          </div>
+        </div>
+
+        <aside class="panel">
+          <div class="field">
+            <span class="field-label">Lip-sync source</span>
+            <div class="seg" role="radiogroup" aria-label="Lip-sync source">
+              <button class="seg-btn is-on" data-mode="phoneme" role="radio" aria-checked="true">
+                Phoneme timeline
+              </button>
+              <button class="seg-btn" data-mode="acoustic" role="radio" aria-checked="false">
+                Acoustic fallback
+              </button>
+            </div>
+            <p class="field-note" id="modeNote"></p>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Framing</span>
+            <select id="framingSel" class="sel">
+              <option value="mouth">Mouth close-up</option>
+              <option value="bust">Head and shoulders</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Clip</span>
+            <select id="clipSel" class="sel"></select>
+            <p class="field-note" id="clipText"></p>
+          </div>
+
+          <div class="field">
+            <button class="btn btn-primary" id="playBtn" disabled>Play</button>
+          </div>
+
+          <div class="field">
+            <span class="field-label">
+              Blendshape weights
+              <span class="field-label-aside" id="phonemeNow"></span>
+            </span>
+            <div class="bars" id="bars"></div>
+            <p class="field-note">
+              VRM exposes five mouth shapes. Weights are sharpened and normalised before they are
+              applied — summing them raw produces one averaged half-open mouth, which is the single
+              most common lip-sync bug.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <footer class="foot">
+        <p>
+          The four modules under <code>src/lipsync/</code> are copied byte-for-byte from the
+          production application — no demo-only reimplementation.
+          <a href="/projects/9DigitalHuman/">Design notes and write-up</a>
+        </p>
+      </footer>
+    </main>
+
+
+  </body>
+</html>

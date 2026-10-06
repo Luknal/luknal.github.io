@@ -1,0 +1,18 @@
+[
+  {
+    "id": "intro",
+    "text": "你好，我是一个运行在浏览器里的三维数字人。我的口型由语音合成模型输出的音素时间轴驱动，每一帧都和声音精确对齐。",
+    "audio": "assets/intro.wav",
+    "visemes": "assets/intro.visemes.json",
+    "seconds": 10.69,
+    "sampleRate": 22050
+  },
+  {
+    "id": "fallback",
+    "text": "如果语音服务不提供音素时间轴，就只能分析音频波形来估计口型。你可以切换上面的开关，直接对比两种方案的差别。",
+    "audio": "assets/fallback.wav",
+    "visemes": "assets/fallback.visemes.json",
+    "seconds": 9.91,
+    "sampleRate": 22050
+  }
+]
