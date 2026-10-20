@@ -10,6 +10,9 @@ main-image: /Chassis.jpg
 ---
 ---
 ## Electronics
+{% assign pcb_page = site.projects | where_exp: "p", "p.path contains 'RCcarPCB'" | first %}
+My own remote and receiver boards are on a separate page: [RC Car Remote & Receiver PCBs]({{ pcb_page.url }}).
+
 Another version (DONE BY ANOTHER GROUP NOT ME)
 {% include image-gallery.html images="Electronics.jpg" height="400" %}
 
