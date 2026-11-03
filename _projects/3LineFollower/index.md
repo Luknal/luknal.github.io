@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Line-Following Robot Car
-description: Designed and built an autonomous line-following robot for EE 201 that tracks a black line on a white surface using a custom photoresistor sensor array and a tunable SPID control loop on an Arduino Mega. Contributed a custom KiCad sensor PCB, a 3D-printed chassis and light shield, and modified Arduino firmware — the car completed the course in 53 seconds and was the first team to demo in-section.
+description: Designed and built an autonomous line-following robot for EE 201 that tracks a black line on a white surface using a custom photoresistor sensor array and a tunable SPID control loop on an Arduino Mega. Contributed a custom KiCad sensor PCB, a 3D-printed chassis and light shield, and modified Arduino firmware.
 skills:
 - Arduino / C++
 - KiCad PCB design
