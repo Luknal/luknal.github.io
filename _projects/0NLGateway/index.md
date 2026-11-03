@@ -1,4 +1,5 @@
 ---
+published: false
 layout: post
 title: Natural-Language Gateway for 93 Data APIs
 description: A Spring Boot service that turns a plain-language question into a call against the right one of 93 declared data APIs, with no code written per endpoint. Routing runs as a four-stage pipeline - keyword or vector retrieval, LLM reranking, LLM parameter extraction, then the HTTP call - over a tool catalogue defined entirely in YAML. Packaged with a dependency-free mock data service so the whole system runs locally.
