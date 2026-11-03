@@ -5,16 +5,11 @@ description:  Designed, 3D printed, and assembled a remote-controlled cars inclu
 skills: 
 - Solidwork
 - 3D printing
-- Onshape
+- Onsape
 main-image: /Chassis.jpg
 ---
 ---
-## Electronics
-{% assign pcb_page = site.projects | where_exp: "p", "p.path contains 'RCcarPCB'" | first %}
-My own remote and receiver boards are on a separate page: [RC Car Remote & Receiver PCBs]({{ pcb_page.url }}).
 
-Another version (DONE BY ANOTHER GROUP NOT ME)
-{% include image-gallery.html images="Electronics.jpg" height="400" %}
 
 ## Onshape model
 {% include image-gallery.html images="FinalAssem.png" height="400" %}
